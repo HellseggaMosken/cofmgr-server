@@ -12,7 +12,7 @@ import (
 func AuthRequired(isAdmin bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token := c.GetHeader("token")
-		isAdmin, _, expired, valid := authservice.ParseToken(token)
+		isAdmin, id, expired, valid := authservice.ParseToken(token)
 
 		if !valid {
 			c.AbortWithStatus(http.StatusForbidden)
@@ -24,9 +24,17 @@ func AuthRequired(isAdmin bool) gin.HandlerFunc {
 		}
 
 		if isAdmin {
-			c.Set("admin", model.Admin{})
+			if admin := model.FindAdminWithID(id); admin == nil {
+				c.AbortWithStatusJSON(http.StatusForbidden, "no admin found")
+			} else {
+				c.Set("admin", admin)
+			}
 		} else {
-			c.Set("user", model.User{})
+			if user := model.FindAdminWithID(id); user == nil {
+				c.AbortWithStatusJSON(http.StatusForbidden, "no user found")
+			} else {
+				c.Set("admin", user)
+			}
 		}
 		c.Next()
 		return
