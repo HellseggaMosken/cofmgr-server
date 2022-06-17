@@ -1,15 +1,14 @@
 package conf
 
 import (
-	"os"
-
 	"cofmgr/logger"
+	"cofmgr/util"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
 
-var ServerAddress = ":8888"
+var ServerAddress string
 
 func Init() {
 	if err := godotenv.Load(); err != nil {
@@ -18,11 +17,9 @@ func Init() {
 
 	logger.Init()
 
-	if addr := os.Getenv("SERVER_ADDRESS"); addr != "" {
-		ServerAddress = addr
-	}
+	ServerAddress = util.Env("SERVER_ADDRESS", ":8888")
 
-	gin.SetMode(os.Getenv("GIN_MODE"))
+	gin.SetMode(util.Env("GIN_MODE", "debug"))
 
 	// fileservice.Init()
 
