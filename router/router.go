@@ -15,6 +15,7 @@ func NewRouter() *gin.Engine {
 
 	v1 := r.Group("/api/v1")
 	{
+		// v1.Use(middleware.AuthRequired(false))
 		v1.GET("/ping", api.Ping)
 	}
 

@@ -54,3 +54,7 @@ func Fatal(msg ...interface{}) {
 	lg.Fatalln(msg...)
 	os.Exit(0)
 }
+
+func Panic(msg ...interface{}) {
+	lg.Panicln(msg...)
+}

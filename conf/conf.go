@@ -2,6 +2,7 @@ package conf
 
 import (
 	"cofmgr/logger"
+	"cofmgr/service/authservice"
 	"cofmgr/util"
 
 	"github.com/gin-gonic/gin"
@@ -21,9 +22,9 @@ func Init() {
 
 	gin.SetMode(util.Env("GIN_MODE", "debug"))
 
-	// fileservice.Init()
+	authservice.Init()
 
-	// authservice.Init()
+	// fileservice.Init()
 
 	// serializer.InitSerializer()
 
