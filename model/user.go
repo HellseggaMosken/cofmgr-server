@@ -10,9 +10,8 @@ import (
 )
 
 type User struct {
-	ID string `gorm:"primaryKey;->;<-:create"` // allow read and create
-	// Email          string `gorm:"index;not null"`
-	Email          string
+	ID             string `gorm:"primaryKey;->;<-:create"` // allow read and create
+	Email          string `gorm:"index;not null;unique"`
 	FirstName      string
 	MidName        string
 	LastName       string
