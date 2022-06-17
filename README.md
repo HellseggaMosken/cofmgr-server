@@ -11,6 +11,7 @@
 0. [OSS](https://github.com/aliyun/aliyun-oss-go-sdk): 阿里云对象存储 SDK
 0. [Logrus](https://github.com/sirupsen/logrus): 日志工具
 0. [GoDotEnv](https://github.com/joho/godotenv): 环境变量工具
+0. [Gin-Swagger](https://github.com/swaggo/gin-swagger): Swagger 接口文档
 
 ## 环境变量
 
@@ -29,3 +30,16 @@ OSS_ACCESS_KEY_ID="xxxx"
 OSS_ACCESS_KEY_SECRET="xxxx"
 OSS_BUCKET="xxxx"
 ```
+
+## Swagger
+
+### Swagger 文档生成
+
+```shell
+go install github.com/swaggo/swag/cmd/swag
+swag init
+```
+
+### Swagger 地址
+
+`address:port/swagger/index.html`

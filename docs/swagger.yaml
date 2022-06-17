@@ -1,0 +1,21 @@
+basePath: /api/v1
+info:
+  contact: {}
+  description: 会议投稿系统的后端接口文档。
+  title: 会议投稿系统
+  version: "1.0"
+paths:
+  /ping:
+    get:
+      description: Check server status
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: pong
+          schema:
+            type: ""
+      summary: Ping
+      tags:
+      - Test
+swagger: "2.0"

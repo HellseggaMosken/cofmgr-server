@@ -9,7 +9,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// Ping 状态检查页面
+// @Tags Test
+// @Summary Ping
+// @Description Check server status
+// @Router /ping [get]
+// @Produce json
+// @Success 200 {} string "pong"
 func Ping(c *gin.Context) {
 	c.JSON(http.StatusOK, "pong")
 }
