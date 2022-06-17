@@ -35,6 +35,16 @@ func (u *User) Create() {
 	}
 }
 
+func ListUsers() []User {
+	users := make([]User, 0)
+	err := db.Find(&users).Error
+	if err != nil {
+		logger.Panic("when list users:", err)
+		return nil
+	}
+	return users
+}
+
 func FindUserWithID(id string) *User {
 	var res User
 	err := db.First(&res, "id = ?", id).Error
