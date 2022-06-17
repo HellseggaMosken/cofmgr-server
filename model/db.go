@@ -56,6 +56,10 @@ func migrate() {
 	if err := db.AutoMigrate(
 		&User{},
 		&Admin{},
+		&Conference{},
+		&Contribution{},
+		&RefereeCof{},
+		&RefereeCtb{},
 	); err != nil {
 		logger.Fatal("数据库迁移失败", err)
 	}
