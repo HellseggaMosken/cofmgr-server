@@ -2,6 +2,7 @@ package conf
 
 import (
 	"cofmgr/logger"
+	"cofmgr/model"
 	"cofmgr/service/authservice"
 	"cofmgr/util"
 
@@ -28,5 +29,5 @@ func Init() {
 
 	// serializer.InitSerializer()
 
-	// model.InitDatabase()
+	model.InitDatabase()
 }
