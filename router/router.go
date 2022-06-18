@@ -2,7 +2,7 @@ package router
 
 import (
 	"cofmgr/api"
-	"cofmgr/middleware"
+	md "cofmgr/middleware"
 	"cofmgr/util"
 
 	"github.com/gin-gonic/gin"
@@ -11,7 +11,7 @@ import (
 func NewRouter() *gin.Engine {
 	r := gin.Default()
 
-	r.Use(middleware.Cors([]string{util.Env("ALLOW_ORIGIN", "*")}))
+	r.Use(md.Cors([]string{util.Env("ALLOW_ORIGIN", "*")}))
 	v1 := r.Group("/api/v1")
 
 	v1.GET("/ping", api.Ping)
@@ -21,13 +21,13 @@ func NewRouter() *gin.Engine {
 		user.POST("", api.UserRegister)
 		{
 			user := user.Group("")
-			user.Use(middleware.AuthRequired(false))
+			user.Use(md.AuthRequired(md.AuthRequiredUser))
 			user.PUT("", api.UserUpdate)
 		}
 
 		{
 			user := user.Group("")
-			user.Use(middleware.AuthRequired(true))
+			user.Use(md.AuthRequired(md.AuthRequiredAdmin))
 			user.GET(":id", api.UserShow)
 			user.GET("", api.UserList)
 		}
@@ -37,12 +37,12 @@ func NewRouter() *gin.Engine {
 		password := v1.Group("/password")
 		{
 			password := password.Group("")
-			password.Use(middleware.AuthRequired(false))
+			password.Use(md.AuthRequired(md.AuthRequiredUser))
 			password.PUT("user", api.PasswordChangeForUser)
 		}
 		{
 			password := password.Group("")
-			password.Use(middleware.AuthRequired(true))
+			password.Use(md.AuthRequired(md.AuthRequiredAdmin))
 			password.PUT("admin", api.PasswordChangeForAdmin)
 		}
 	}
@@ -59,7 +59,7 @@ func NewRouter() *gin.Engine {
 		cof.GET("", api.ConferenceList)
 		{
 			cof := cof.Group("")
-			cof.Use(middleware.AuthRequired(true))
+			cof.Use(md.AuthRequired(md.AuthRequiredAdmin))
 			cof.POST("", api.ConferenceCreate)
 			cof.PUT("", api.ConferenceUpdate)
 		}
@@ -69,7 +69,7 @@ func NewRouter() *gin.Engine {
 		ctb := v1.Group("/contributions")
 		ctb.GET("common/:id", api.ContributionShow)
 		{
-			ctb.Use(middleware.AuthRequired(false))
+			ctb.Use(md.AuthRequired(md.AuthRequiredUser))
 			ctb.POST("", api.ContributionCreate)
 			ctb.PUT("", api.ContributionUpdate)
 			ctb.GET("user", api.ContributionListWithUser)
@@ -79,11 +79,18 @@ func NewRouter() *gin.Engine {
 
 	{
 		referee := v1.Group("/referees")
-		referee.Use(middleware.AuthRequired(true))
+		referee.Use(md.AuthRequired(md.AuthRequiredAdmin))
 		referee.POST("conference/:cof_id/user/user_id", api.RefereeAddForConference)
 		referee.DELETE("conference/:cof_id/user/user_id", api.RefereeRemoveForConference)
 		referee.POST("contribution/:ctb_id/user/user_id", api.RefereeAddForContribution)
 		referee.DELETE("contribution/:ctb_id/user/user_id", api.RefereeRemoveForContribution)
+	}
+
+	{
+		oss := v1.Group("/oss")
+		oss.Use(md.AuthRequired(md.AuthRequiredAny))
+		oss.POST("upload", api.OSSGetUploadURL)
+		oss.POST("download", api.OSSGetUDownloaddURL)
 	}
 
 	return r

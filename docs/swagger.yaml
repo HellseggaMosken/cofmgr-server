@@ -120,6 +120,20 @@ definitions:
     - email
     - password
     type: object
+  ossservice.GetDownloadURLService:
+    properties:
+      filename:
+        type: string
+    required:
+    - filename
+    type: object
+  ossservice.GetUploadURLService:
+    properties:
+      filename:
+        type: string
+    required:
+    - filename
+    type: object
   passwordservice.PasswordService:
     properties:
       newPassword:
@@ -170,6 +184,19 @@ definitions:
       updateDate:
         type: integer
       userId:
+        type: string
+    type: object
+  serializer.OSSSignedURL:
+    properties:
+      contentType:
+        type: string
+      expiredInSec:
+        type: integer
+      filename:
+        type: string
+      method:
+        type: string
+      url:
         type: string
     type: object
   serializer.User:
@@ -538,6 +565,66 @@ paths:
       summary: User Login
       tags:
       - Login
+  /oss/download:
+    post:
+      description: Get a signed oss url for download
+      parameters:
+      - description: User or Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/ossservice.GetDownloadURLService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.OSSSignedURL'
+        "404":
+          description: Target file not exists
+          schema:
+            type: string
+      summary: OSS Download URL
+      tags:
+      - OSS
+  /oss/upload:
+    post:
+      description: Get a signed oss url for upload
+      parameters:
+      - description: User or Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/ossservice.GetUploadURLService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.OSSSignedURL'
+        "410":
+          description: Unsuported file type. Only suport doc/docx/pdf
+          schema:
+            type: string
+      summary: OSS Upload URL
+      tags:
+      - OSS
   /password/admin:
     put:
       description: Change admin password

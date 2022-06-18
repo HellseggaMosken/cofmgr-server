@@ -4,6 +4,7 @@ import (
 	"cofmgr/logger"
 	"cofmgr/model"
 	"cofmgr/service/authservice"
+	"cofmgr/service/ossservice"
 	"cofmgr/util"
 
 	"github.com/gin-gonic/gin"
@@ -29,8 +30,8 @@ func Init() {
 	logger.Debug("inti authservice")
 	authservice.Init()
 
-	// logger.Debug("inti fileservice")
-	// fileservice.Init()
+	logger.Debug("inti ossservice")
+	ossservice.Init()
 
 	logger.Debug("inti database")
 	model.InitDatabase()

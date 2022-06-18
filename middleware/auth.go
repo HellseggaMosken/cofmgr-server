@@ -8,10 +8,18 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func AuthRequired(isAdmin bool) gin.HandlerFunc {
+type AuthRequiredType int
+
+const (
+	AuthRequiredAdmin AuthRequiredType = iota
+	AuthRequiredUser
+	AuthRequiredAny // user or admin
+)
+
+func AuthRequired(requiredType AuthRequiredType) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token := c.GetHeader("token")
-		_isAdmin, id, expired, valid := authservice.ParseToken(token)
+		isAdmin, id, expired, valid := authservice.ParseToken(token)
 
 		if !valid {
 			c.AbortWithStatus(service.StatusNoAuth)
@@ -22,8 +30,13 @@ func AuthRequired(isAdmin bool) gin.HandlerFunc {
 			return
 		}
 
-		if isAdmin != _isAdmin {
-			c.AbortWithStatusJSON(service.StatusNoAuth, "wrong role")
+		if requiredType == AuthRequiredAdmin && !isAdmin {
+			c.AbortWithStatusJSON(service.StatusNoAuth, "need admin role")
+			return
+		}
+
+		if requiredType == AuthRequiredUser && isAdmin {
+			c.AbortWithStatusJSON(service.StatusNoAuth, "need user role")
 			return
 		}
 

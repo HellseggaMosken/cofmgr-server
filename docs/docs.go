@@ -423,6 +423,98 @@ const docTemplate = `{
                 }
             }
         },
+        "/oss/download": {
+            "post": {
+                "description": "Get a signed oss url for download",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OSS"
+                ],
+                "summary": "OSS Download URL",
+                "parameters": [
+                    {
+                        "description": "User or Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ossservice.GetDownloadURLService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.OSSSignedURL"
+                        }
+                    },
+                    "404": {
+                        "description": "Target file not exists",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/oss/upload": {
+            "post": {
+                "description": "Get a signed oss url for upload",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "OSS"
+                ],
+                "summary": "OSS Upload URL",
+                "parameters": [
+                    {
+                        "description": "User or Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ossservice.GetUploadURLService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.OSSSignedURL"
+                        }
+                    },
+                    "410": {
+                        "description": "Unsuported file type. Only suport doc/docx/pdf",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/password/admin": {
             "put": {
                 "description": "Change admin password",
@@ -1021,6 +1113,28 @@ const docTemplate = `{
                 }
             }
         },
+        "ossservice.GetDownloadURLService": {
+            "type": "object",
+            "required": [
+                "filename"
+            ],
+            "properties": {
+                "filename": {
+                    "type": "string"
+                }
+            }
+        },
+        "ossservice.GetUploadURLService": {
+            "type": "object",
+            "required": [
+                "filename"
+            ],
+            "properties": {
+                "filename": {
+                    "type": "string"
+                }
+            }
+        },
         "passwordservice.PasswordService": {
             "type": "object",
             "required": [
@@ -1094,6 +1208,26 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "serializer.OSSSignedURL": {
+            "type": "object",
+            "properties": {
+                "contentType": {
+                    "type": "string"
+                },
+                "expiredInSec": {
+                    "type": "integer"
+                },
+                "filename": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string"
+                },
+                "url": {
                     "type": "string"
                 }
             }
