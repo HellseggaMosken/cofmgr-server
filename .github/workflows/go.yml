@@ -27,9 +27,12 @@ jobs:
       run: go test -v ./...
     
     - name: Deploy
-      run: |
-        apt update
-        apt install -y sshpass
-        go build .
-        sshpass -p ${{ env.REMOTE_PASSWORD }} scp ./cofmgr ${{ env.REMOTE_USER }}/${{ env.REMOTE_ADDR }}
+        uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
+        with:
+          host: ${{ env.REMOTE_ADDR }}
+          user: ${{ env.REMOTE_USER }}
+          pass: ${{ env.REMOTE_PASSWORD }}
+          # scp from local to remote
+          scp: from ./cofmgr to ~/cofmgr
+
 
