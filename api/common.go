@@ -5,6 +5,7 @@ import (
 
 	"cofmgr/logger"
 	"cofmgr/model"
+	"cofmgr/service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -41,4 +42,13 @@ func currentAdmin(c *gin.Context) *model.Admin {
 	}
 	logger.Panic("in currentAdmin:", "not found")
 	return nil
+}
+
+func bind(c *gin.Context, servicePointer interface{}) (ok bool) {
+	err := c.ShouldBind(servicePointer)
+	if err == nil {
+		return true
+	}
+	c.JSON(service.StatusBadParam, err.Error())
+	return false
 }

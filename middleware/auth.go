@@ -11,7 +11,7 @@ import (
 func AuthRequired(isAdmin bool) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		token := c.GetHeader("token")
-		isAdmin, id, expired, valid := authservice.ParseToken(token)
+		_isAdmin, id, expired, valid := authservice.ParseToken(token)
 
 		if !valid {
 			c.AbortWithStatus(service.StatusNoAuth)
@@ -19,6 +19,11 @@ func AuthRequired(isAdmin bool) gin.HandlerFunc {
 		}
 		if expired {
 			c.AbortWithStatusJSON(service.StatusNoAuth, "token expired")
+			return
+		}
+
+		if isAdmin != _isAdmin {
+			c.AbortWithStatusJSON(service.StatusNoAuth, "wrong role")
 			return
 		}
 
