@@ -28,6 +28,7 @@ jobs:
 
     - name: Swagger Generator
       run: |
+        go mod tidy
         go install github.com/swaggo/swag/cmd/swag
         swag init
     
@@ -37,4 +38,4 @@ jobs:
         apt install -y sshpass
         go build .
         sshpass -p ${{ env.REMOTE_PASSWORD }} scp ./cofmgr ${{ env.REMOTE_USER }}/${{ env.REMOTE_ADDR }}
-        
+
