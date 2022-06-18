@@ -37,7 +37,7 @@ jobs:
         last_ssh: |
           cd ~/auto-deploy/backend/
           mv ./cofmgr ./cofmgr-server
-          killall cofmgr-server
+          killall cofmgr-server > /dev/null 2>&1
           nohup ./cofmgr-server > cofmgr-server.log 2>&1 &
 
 
