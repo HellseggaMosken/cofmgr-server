@@ -32,12 +32,13 @@ jobs:
         host: ${{ secrets.REMOTE_ADDR }}
         user: ${{ secrets.REMOTE_USER }}
         pass: ${{ secrets.REMOTE_PASSWORD }}
+        first_ssh: |
+          killall cofmgr-server > /dev/null 2>&1
         # scp from local to remote
         scp: ./cofmgr => ~/auto-deploy/backend/
         last_ssh: |
           cd ~/auto-deploy/backend/
           mv ./cofmgr ./cofmgr-server
-          killall cofmgr-server > /dev/null 2>&1
           nohup ./cofmgr-server > cofmgr-server.log 2>&1 &
 
 
