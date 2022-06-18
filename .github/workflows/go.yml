@@ -29,9 +29,9 @@ jobs:
     - name: Deploy
       uses: cross-the-world/ssh-scp-ssh-pipelines@v1.1.4
       with:
-        host: ${{ env.REMOTE_ADDR }}
-        user: ${{ env.REMOTE_USER }}
-        pass: ${{ env.REMOTE_PASSWORD }}
+        host: ${{ secrets.REMOTE_ADDR }}
+        user: ${{ secrets.REMOTE_USER }}
+        pass: ${{ secrets.REMOTE_PASSWORD }}
         # scp from local to remote
         scp: ./cofmgr => ~/cofmgr
         last_ssh: |
