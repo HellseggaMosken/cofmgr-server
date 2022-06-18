@@ -13,6 +13,7 @@ import (
 // @Param token body string true "Admin Token"
 // @Produce json
 // @Success 200 {string} string "Sucess"
+// @Failure 403 {string} string "No token or token invalid or expired"
 func RefereeAddForConference(c *gin.Context) {
 	code := refereeservice.AddRefereeForConference(c.Param("cof_id"), c.Param("user_id"))
 	c.Status(code)
@@ -25,6 +26,7 @@ func RefereeAddForConference(c *gin.Context) {
 // @Param token body string true "Admin Token"
 // @Produce json
 // @Success 200 {string} string "Sucess"
+// @Failure 403 {string} string "No token or token invalid or expired"
 func RefereeRemoveForConference(c *gin.Context) {
 	code := refereeservice.RemoveRefereeForConference(c.Param("cof_id"), c.Param("user_id"))
 	c.Status(code)
@@ -37,6 +39,7 @@ func RefereeRemoveForConference(c *gin.Context) {
 // @Param token body string true "Admin Token"
 // @Produce json
 // @Success 200 {string} string "Sucess"
+// @Failure 403 {string} string "No token or token invalid or expired"
 func RefereeAddForContribution(c *gin.Context) {
 	code := refereeservice.AddRefereeForContribution(c.Param("ctb_id"), c.Param("user_id"))
 	c.Status(code)
@@ -49,6 +52,7 @@ func RefereeAddForContribution(c *gin.Context) {
 // @Param token body string true "Admin Token"
 // @Produce json
 // @Success 200 {string} string "Sucess"
+// @Failure 403 {string} string "No token or token invalid or expired"
 func RefereeRemoveForContribution(c *gin.Context) {
 	code := refereeservice.RemoveRefereeForContribution(c.Param("ctb_id"), c.Param("user_id"))
 	c.Status(code)

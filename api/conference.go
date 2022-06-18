@@ -14,6 +14,7 @@ import (
 // @Param body  body cofservice.CreateService true "HTTP Body"
 // @Produce json
 // @Success 200 {object} serializer.Conference "Sucess"
+// @Failure 403 {string} string                "No token or token invalid or expired"
 func ConferenceCreate(c *gin.Context) {
 	var s cofservice.CreateService
 	if !bind(c, &s) {
@@ -31,6 +32,7 @@ func ConferenceCreate(c *gin.Context) {
 // @Param body  body cofservice.UpdateService true "HTTP Body"
 // @Produce json
 // @Success 200 {object} serializer.Conference "Sucess"
+// @Failure 403 {string} string                "No token or token invalid or expired"
 func ConferenceUpdate(c *gin.Context) {
 	var s cofservice.UpdateService
 	if !bind(c, &s) {

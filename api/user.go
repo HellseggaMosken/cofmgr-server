@@ -32,6 +32,7 @@ func UserRegister(c *gin.Context) {
 // @Produce json
 // @Success 200 {object} serializer.User "Sucess"
 // @Failure 406 {string} string          "Email exists"
+// @Failure 403 {string} string          "No token or token invalid or expired"
 func UserUpdate(c *gin.Context) {
 	var s userservice.UpdateService
 	if !bind(c, &s) {
@@ -49,6 +50,7 @@ func UserUpdate(c *gin.Context) {
 // @Produce json
 // @Success 200 {object} serializer.User "Sucess"
 // @Failure 404 {string} string          "Not found"
+// @Failure 403 {string} string          "No token or token invalid or expired"
 func UserShow(c *gin.Context) {
 	user, code := userservice.Show(c.Param("id"))
 	c.JSON(code, user)
@@ -61,6 +63,7 @@ func UserShow(c *gin.Context) {
 // @Param token body string true "Admin Token"
 // @Produce json
 // @Success 200 {array}  serializer.User "Sucess"
+// @Failure 403 {string} string          "No token or token invalid or expired"
 func UserList(c *gin.Context) {
 	users, code := userservice.List()
 	c.JSON(code, users)

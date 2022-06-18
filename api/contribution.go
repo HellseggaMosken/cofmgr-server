@@ -14,6 +14,7 @@ import (
 // @Param body  body ctbservice.CreateService true "HTTP Body"
 // @Produce json
 // @Success 200 {object} serializer.Contribution "Sucess"
+// @Failure 403 {string} string                  "No token or token invalid or expired"
 func ContributionCreate(c *gin.Context) {
 	var s ctbservice.CreateService
 	if !bind(c, &s) {
@@ -31,6 +32,7 @@ func ContributionCreate(c *gin.Context) {
 // @Param body  body ctbservice.UpdateService true "HTTP Body"
 // @Produce json
 // @Success 200 {object} serializer.Contribution "Sucess"
+// @Failure 403 {string} string                  "No token or token invalid or expired"
 func ContributionUpdate(c *gin.Context) {
 	var s ctbservice.UpdateService
 	if !bind(c, &s) {
@@ -59,6 +61,7 @@ func ContributionShow(c *gin.Context) {
 // @Param token body string true "User Token"
 // @Produce json
 // @Success 200 {array} serializer.Contribution "Sucess"
+// @Failure 403 {string} string                  "No token or token invalid or expired"
 func ContributionListWithUser(c *gin.Context) {
 	cofs, code := ctbservice.ListWithUser(currentUser(c))
 	c.JSON(code, cofs)
@@ -71,6 +74,7 @@ func ContributionListWithUser(c *gin.Context) {
 // @Param token body string true "User Token"
 // @Produce json
 // @Success 200 {array} serializer.Contribution "Sucess"
+// @Failure 403 {string} string                 "No token or token invalid or expired"
 func ContributionListWithConference(c *gin.Context) {
 	cofs, code := ctbservice.ListWithConference(c.Param("cof_id"))
 	c.JSON(code, cofs)

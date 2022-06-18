@@ -15,6 +15,7 @@ import (
 // @Produce json
 // @Success 200 {string} string "Sucess"
 // @Failure 401 {string} string "Wrong password or account"
+// @Failure 403 {string} string "No token or token invalid or expired"
 func PasswordChangeForUser(c *gin.Context) {
 	var s passwordservice.PasswordService
 	if !bind(c, &s) {
@@ -33,6 +34,7 @@ func PasswordChangeForUser(c *gin.Context) {
 // @Produce json
 // @Success 200 {string} string "Sucess"
 // @Failure 401 {string} string "Wrong password or account"
+// @Failure 403 {string} string "No token or token invalid or expired"
 func PasswordChangeForAdmin(c *gin.Context) {
 	var s passwordservice.PasswordService
 	if !bind(c, &s) {
