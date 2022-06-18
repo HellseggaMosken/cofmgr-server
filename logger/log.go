@@ -58,3 +58,11 @@ func Fatal(msg ...interface{}) {
 func Panic(msg ...interface{}) {
 	lg.Panicln(msg...)
 }
+
+func Logger() *logrus.Logger {
+	return lg
+}
+
+func LoggerLevel() logrus.Level {
+	return lg.Level
+}

@@ -17,17 +17,21 @@ func Init() {
 		logger.Info("Not detect .env file")
 	}
 
+	logger.Debug("inti logger")
 	logger.Init()
 
+	logger.Debug("inti server address")
 	ServerAddress = util.Env("SERVER_ADDRESS", ":8888")
 
+	logger.Debug("inti gin mode")
 	gin.SetMode(util.Env("GIN_MODE", "debug"))
 
+	logger.Debug("inti authservice")
 	authservice.Init()
 
+	// logger.Debug("inti fileservice")
 	// fileservice.Init()
 
-	// serializer.InitSerializer()
-
+	logger.Debug("inti database")
 	model.InitDatabase()
 }

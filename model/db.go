@@ -1,7 +1,6 @@
 package model
 
 import (
-	"log"
 	"os"
 	"time"
 
@@ -22,11 +21,19 @@ func InitDatabase() {
 
 	if os.Getenv("GORM_LOG_MODE") == "true" {
 		cfg.Logger = gl.New(
-			log.New(os.Stdout, "\r\n", log.LstdFlags),
+			logger.Logger(),
 			gl.Config{
 				SlowThreshold: time.Second, // 慢 SQL 阈值
-				LogLevel:      gl.Info,     // Log level
-				Colorful:      true,        // 彩色打印
+				LogLevel: func() gl.LogLevel {
+					lv := gl.LogLevel(logger.LoggerLevel())
+					if lv > gl.Info {
+						return gl.Info
+					} else if lv < gl.Silent {
+						return gl.Silent
+					}
+					return lv
+				}(), // Log level
+				Colorful: true, // 彩色打印
 			},
 		)
 	}
