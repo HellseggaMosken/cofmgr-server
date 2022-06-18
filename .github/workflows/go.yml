@@ -25,12 +25,6 @@ jobs:
 
     - name: Test
       run: go test -v ./...
-
-    - name: Swagger Generator
-      run: |
-        go mod tidy
-        go install github.com/swaggo/swag/cmd/swag
-        swag init
     
     - name: Deploy
       run: |
