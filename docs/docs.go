@@ -16,6 +16,469 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/conferences": {
+            "get": {
+                "description": "List all conferences",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Conference"
+                ],
+                "summary": "List All Conferences",
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/serializer.Conference"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a conference",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Conference"
+                ],
+                "summary": "Update Conference",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/cofservice.UpdateService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.Conference"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a conference",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Conference"
+                ],
+                "summary": "Create Conference",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/cofservice.CreateService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.Conference"
+                        }
+                    }
+                }
+            }
+        },
+        "/conferences/{conference_id}": {
+            "get": {
+                "description": "Show a conference info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Conference"
+                ],
+                "summary": "Show Conference",
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.Conference"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/contributions": {
+            "put": {
+                "description": "Update a contribution",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contribution"
+                ],
+                "summary": "Update Contribution",
+                "parameters": [
+                    {
+                        "description": "User Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ctbservice.UpdateService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.Contribution"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create a contribution",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contribution"
+                ],
+                "summary": "Create Contribution",
+                "parameters": [
+                    {
+                        "description": "User Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ctbservice.CreateService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.Contribution"
+                        }
+                    }
+                }
+            }
+        },
+        "/contributions/common/{contribution_id}": {
+            "get": {
+                "description": "Show a contribution info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contribution"
+                ],
+                "summary": "Show Contribution",
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.Contribution"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/contributions/conference/{conference_id}": {
+            "get": {
+                "description": "List all contributions of a conference",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contribution"
+                ],
+                "summary": "List All Contributions of a Conference",
+                "parameters": [
+                    {
+                        "description": "User Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/serializer.Contribution"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/contributions/user": {
+            "get": {
+                "description": "List all contributions of the current contributor(user)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Contribution"
+                ],
+                "summary": "List All Contributions of Current Contributor",
+                "parameters": [
+                    {
+                        "description": "User Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/serializer.Contribution"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login/admin": {
+            "post": {
+                "description": "Admin login",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Admin Login",
+                "parameters": [
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/loginservice.LoginService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Actually, is {\"admin\": User, \"token\": string}",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.User"
+                        }
+                    },
+                    "401": {
+                        "description": "Wrong password or account",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/login/user": {
+            "post": {
+                "description": "User login",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Login"
+                ],
+                "summary": "User Login",
+                "parameters": [
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/loginservice.LoginService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Actually, is {\"user\": User, \"token\": string}",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.User"
+                        }
+                    },
+                    "401": {
+                        "description": "Wrong password or account",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/password/admin": {
+            "put": {
+                "description": "Change admin password",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Password"
+                ],
+                "summary": "Change Admin Password",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/passwordservice.PasswordService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Wrong password or account",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/password/user": {
+            "put": {
+                "description": "Change user password",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Password"
+                ],
+                "summary": "Change User Password",
+                "parameters": [
+                    {
+                        "description": "User Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/passwordservice.PasswordService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "401": {
+                        "description": "Wrong password or account",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/ping": {
             "get": {
                 "description": "Check server status",
@@ -30,9 +493,643 @@ const docTemplate = `{
                     "200": {
                         "description": "pong",
                         "schema": {
-                            "type": ""
+                            "type": "string"
                         }
                     }
+                }
+            }
+        },
+        "/referees/conference/{conference_id}/user/{user_id}": {
+            "post": {
+                "description": "Add a referee(user) for a conference",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Referee"
+                ],
+                "summary": "Add a Referee for a Conference",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Remove a referee(user) for a conference",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Referee"
+                ],
+                "summary": "Remove a Referee for a Conference",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/referees/contribution/{contribution_id}/user/{user_id}": {
+            "post": {
+                "description": "Assign a contribution to a referee(user)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Referee"
+                ],
+                "summary": "Assign a Contribution to a Referee",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Remove a contribution for a referee(user)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Referee"
+                ],
+                "summary": "Remove a Contribution for a Referee",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "description": "List all users",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "User List",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/serializer.User"
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update user info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "User Update",
+                "parameters": [
+                    {
+                        "description": "User Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userservice.UpdateService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.User"
+                        }
+                    },
+                    "406": {
+                        "description": "Email exists",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Register a new user",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "User Register",
+                "parameters": [
+                    {
+                        "description": "HTTP Body",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/userservice.RegisterService"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.User"
+                        }
+                    },
+                    "406": {
+                        "description": "Email exists",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "get": {
+                "description": "Show user info",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "User Show",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "$ref": "#/definitions/serializer.User"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "cofservice.CreateService": {
+            "type": "object",
+            "required": [
+                "endDate",
+                "name",
+                "startDate",
+                "url"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "maxLength": 100
+                },
+                "endDate": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "location": {
+                    "type": "string",
+                    "maxLength": 100
+                },
+                "name": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "startDate": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "url": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                }
+            }
+        },
+        "cofservice.UpdateService": {
+            "type": "object",
+            "required": [
+                "endDate",
+                "name",
+                "startDate",
+                "url"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "maxLength": 100
+                },
+                "endDate": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "id": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string",
+                    "maxLength": 100
+                },
+                "name": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "startDate": {
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "url": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                }
+            }
+        },
+        "ctbservice.CreateService": {
+            "type": "object",
+            "required": [
+                "abstract",
+                "conferenceId",
+                "fileName",
+                "title"
+            ],
+            "properties": {
+                "abstract": {
+                    "type": "string",
+                    "maxLength": 2000,
+                    "minLength": 10
+                },
+                "conferenceId": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 10
+                }
+            }
+        },
+        "ctbservice.UpdateService": {
+            "type": "object",
+            "required": [
+                "abstract",
+                "fileName",
+                "id",
+                "status",
+                "title"
+            ],
+            "properties": {
+                "abstract": {
+                    "type": "string",
+                    "maxLength": 2000,
+                    "minLength": 10
+                },
+                "comment": {
+                    "type": "string",
+                    "maxLength": 2000
+                },
+                "fileName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer",
+                    "maximum": 4,
+                    "minimum": -1
+                },
+                "title": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 10
+                }
+            }
+        },
+        "loginservice.LoginService": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "maxLength": 30,
+                    "minLength": 1
+                },
+                "password": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 6
+                }
+            }
+        },
+        "passwordservice.PasswordService": {
+            "type": "object",
+            "required": [
+                "newPassword",
+                "oldPassword"
+            ],
+            "properties": {
+                "newPassword": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 6
+                },
+                "oldPassword": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 6
+                }
+            }
+        },
+        "serializer.Conference": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "endDate": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "startDate": {
+                    "type": "integer"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "serializer.Contribution": {
+            "type": "object",
+            "properties": {
+                "abstract": {
+                    "type": "string"
+                },
+                "comment": {
+                    "type": "string"
+                },
+                "conferenceId": {
+                    "type": "string"
+                },
+                "fileName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "updateDate": {
+                    "type": "integer"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "serializer.User": {
+            "type": "object",
+            "properties": {
+                "city": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "department": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "midName": {
+                    "type": "string"
+                }
+            }
+        },
+        "userservice.RegisterService": {
+            "type": "object",
+            "required": [
+                "email",
+                "firstName",
+                "lastName",
+                "password"
+            ],
+            "properties": {
+                "city": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
+                },
+                "country": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "department": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "email": {
+                    "type": "string",
+                    "maxLength": 30,
+                    "minLength": 1
+                },
+                "firstName": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
+                },
+                "lastName": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
+                },
+                "midName": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
+                },
+                "password": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 6
+                }
+            }
+        },
+        "userservice.UpdateService": {
+            "type": "object",
+            "required": [
+                "email",
+                "firstName",
+                "lastName"
+            ],
+            "properties": {
+                "city": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
+                },
+                "country": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "department": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 1
+                },
+                "email": {
+                    "type": "string",
+                    "maxLength": 30,
+                    "minLength": 1
+                },
+                "firstName": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
+                },
+                "lastName": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
+                },
+                "midName": {
+                    "type": "string",
+                    "maxLength": 20,
+                    "minLength": 1
                 }
             }
         }

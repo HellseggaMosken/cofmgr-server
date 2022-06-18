@@ -1,10 +1,579 @@
 basePath: /api/v1
+definitions:
+  cofservice.CreateService:
+    properties:
+      description:
+        maxLength: 100
+        type: string
+      endDate:
+        minimum: 0
+        type: integer
+      location:
+        maxLength: 100
+        type: string
+      name:
+        maxLength: 100
+        minLength: 1
+        type: string
+      startDate:
+        minimum: 0
+        type: integer
+      url:
+        maxLength: 100
+        minLength: 1
+        type: string
+    required:
+    - endDate
+    - name
+    - startDate
+    - url
+    type: object
+  cofservice.UpdateService:
+    properties:
+      description:
+        maxLength: 100
+        type: string
+      endDate:
+        minimum: 0
+        type: integer
+      id:
+        type: string
+      location:
+        maxLength: 100
+        type: string
+      name:
+        maxLength: 100
+        minLength: 1
+        type: string
+      startDate:
+        minimum: 0
+        type: integer
+      url:
+        maxLength: 100
+        minLength: 1
+        type: string
+    required:
+    - endDate
+    - name
+    - startDate
+    - url
+    type: object
+  ctbservice.CreateService:
+    properties:
+      abstract:
+        maxLength: 2000
+        minLength: 10
+        type: string
+      conferenceId:
+        type: string
+      fileName:
+        type: string
+      title:
+        maxLength: 100
+        minLength: 10
+        type: string
+    required:
+    - abstract
+    - conferenceId
+    - fileName
+    - title
+    type: object
+  ctbservice.UpdateService:
+    properties:
+      abstract:
+        maxLength: 2000
+        minLength: 10
+        type: string
+      comment:
+        maxLength: 2000
+        type: string
+      fileName:
+        type: string
+      id:
+        type: string
+      status:
+        maximum: 4
+        minimum: -1
+        type: integer
+      title:
+        maxLength: 100
+        minLength: 10
+        type: string
+    required:
+    - abstract
+    - fileName
+    - id
+    - status
+    - title
+    type: object
+  loginservice.LoginService:
+    properties:
+      email:
+        maxLength: 30
+        minLength: 1
+        type: string
+      password:
+        maxLength: 20
+        minLength: 6
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  passwordservice.PasswordService:
+    properties:
+      newPassword:
+        maxLength: 20
+        minLength: 6
+        type: string
+      oldPassword:
+        maxLength: 20
+        minLength: 6
+        type: string
+    required:
+    - newPassword
+    - oldPassword
+    type: object
+  serializer.Conference:
+    properties:
+      description:
+        type: string
+      endDate:
+        type: integer
+      id:
+        type: string
+      location:
+        type: string
+      name:
+        type: string
+      startDate:
+        type: integer
+      url:
+        type: string
+    type: object
+  serializer.Contribution:
+    properties:
+      abstract:
+        type: string
+      comment:
+        type: string
+      conferenceId:
+        type: string
+      fileName:
+        type: string
+      id:
+        type: string
+      status:
+        type: integer
+      title:
+        type: string
+      updateDate:
+        type: integer
+      userId:
+        type: string
+    type: object
+  serializer.User:
+    properties:
+      city:
+        type: string
+      country:
+        type: string
+      department:
+        type: string
+      email:
+        type: string
+      firstName:
+        type: string
+      id:
+        type: string
+      lastName:
+        type: string
+      midName:
+        type: string
+    type: object
+  userservice.RegisterService:
+    properties:
+      city:
+        maxLength: 20
+        minLength: 1
+        type: string
+      country:
+        maxLength: 100
+        minLength: 1
+        type: string
+      department:
+        maxLength: 100
+        minLength: 1
+        type: string
+      email:
+        maxLength: 30
+        minLength: 1
+        type: string
+      firstName:
+        maxLength: 20
+        minLength: 1
+        type: string
+      lastName:
+        maxLength: 20
+        minLength: 1
+        type: string
+      midName:
+        maxLength: 20
+        minLength: 1
+        type: string
+      password:
+        maxLength: 20
+        minLength: 6
+        type: string
+    required:
+    - email
+    - firstName
+    - lastName
+    - password
+    type: object
+  userservice.UpdateService:
+    properties:
+      city:
+        maxLength: 20
+        minLength: 1
+        type: string
+      country:
+        maxLength: 100
+        minLength: 1
+        type: string
+      department:
+        maxLength: 100
+        minLength: 1
+        type: string
+      email:
+        maxLength: 30
+        minLength: 1
+        type: string
+      firstName:
+        maxLength: 20
+        minLength: 1
+        type: string
+      lastName:
+        maxLength: 20
+        minLength: 1
+        type: string
+      midName:
+        maxLength: 20
+        minLength: 1
+        type: string
+    required:
+    - email
+    - firstName
+    - lastName
+    type: object
 info:
   contact: {}
   description: 会议投稿系统的后端接口文档。
   title: 会议投稿系统
   version: "1.0"
 paths:
+  /conferences:
+    get:
+      description: List all conferences
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            items:
+              $ref: '#/definitions/serializer.Conference'
+            type: array
+      summary: List All Conferences
+      tags:
+      - Conference
+    post:
+      description: Create a conference
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/cofservice.CreateService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.Conference'
+      summary: Create Conference
+      tags:
+      - Conference
+    put:
+      description: Update a conference
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/cofservice.UpdateService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.Conference'
+      summary: Update Conference
+      tags:
+      - Conference
+  /conferences/{conference_id}:
+    get:
+      description: Show a conference info
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.Conference'
+        "404":
+          description: Not found
+          schema:
+            type: string
+      summary: Show Conference
+      tags:
+      - Conference
+  /contributions:
+    post:
+      description: Create a contribution
+      parameters:
+      - description: User Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/ctbservice.CreateService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.Contribution'
+      summary: Create Contribution
+      tags:
+      - Contribution
+    put:
+      description: Update a contribution
+      parameters:
+      - description: User Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/ctbservice.UpdateService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.Contribution'
+      summary: Update Contribution
+      tags:
+      - Contribution
+  /contributions/common/{contribution_id}:
+    get:
+      description: Show a contribution info
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.Contribution'
+        "404":
+          description: Not found
+          schema:
+            type: string
+      summary: Show Contribution
+      tags:
+      - Contribution
+  /contributions/conference/{conference_id}:
+    get:
+      description: List all contributions of a conference
+      parameters:
+      - description: User Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            items:
+              $ref: '#/definitions/serializer.Contribution'
+            type: array
+      summary: List All Contributions of a Conference
+      tags:
+      - Contribution
+  /contributions/user:
+    get:
+      description: List all contributions of the current contributor(user)
+      parameters:
+      - description: User Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            items:
+              $ref: '#/definitions/serializer.Contribution'
+            type: array
+      summary: List All Contributions of Current Contributor
+      tags:
+      - Contribution
+  /login/admin:
+    post:
+      description: Admin login
+      parameters:
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/loginservice.LoginService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Actually, is {"admin": User, "token": string}'
+          schema:
+            $ref: '#/definitions/serializer.User'
+        "401":
+          description: Wrong password or account
+          schema:
+            type: string
+      summary: Admin Login
+      tags:
+      - Login
+  /login/user:
+    post:
+      description: User login
+      parameters:
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/loginservice.LoginService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'Actually, is {"user": User, "token": string}'
+          schema:
+            $ref: '#/definitions/serializer.User'
+        "401":
+          description: Wrong password or account
+          schema:
+            type: string
+      summary: User Login
+      tags:
+      - Login
+  /password/admin:
+    put:
+      description: Change admin password
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/passwordservice.PasswordService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            type: string
+        "401":
+          description: Wrong password or account
+          schema:
+            type: string
+      summary: Change Admin Password
+      tags:
+      - Password
+  /password/user:
+    put:
+      description: Change user password
+      parameters:
+      - description: User Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/passwordservice.PasswordService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            type: string
+        "401":
+          description: Wrong password or account
+          schema:
+            type: string
+      summary: Change User Password
+      tags:
+      - Password
   /ping:
     get:
       description: Check server status
@@ -14,8 +583,184 @@ paths:
         "200":
           description: pong
           schema:
-            type: ""
+            type: string
       summary: Ping
       tags:
       - Test
+  /referees/conference/{conference_id}/user/{user_id}:
+    delete:
+      description: Remove a referee(user) for a conference
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            type: string
+      summary: Remove a Referee for a Conference
+      tags:
+      - Referee
+    post:
+      description: Add a referee(user) for a conference
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            type: string
+      summary: Add a Referee for a Conference
+      tags:
+      - Referee
+  /referees/contribution/{contribution_id}/user/{user_id}:
+    delete:
+      description: Remove a contribution for a referee(user)
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            type: string
+      summary: Remove a Contribution for a Referee
+      tags:
+      - Referee
+    post:
+      description: Assign a contribution to a referee(user)
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            type: string
+      summary: Assign a Contribution to a Referee
+      tags:
+      - Referee
+  /users:
+    get:
+      description: List all users
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            items:
+              $ref: '#/definitions/serializer.User'
+            type: array
+      summary: User List
+      tags:
+      - User
+    post:
+      description: Register a new user
+      parameters:
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/userservice.RegisterService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.User'
+        "406":
+          description: Email exists
+          schema:
+            type: string
+      summary: User Register
+      tags:
+      - User
+    put:
+      description: Update user info
+      parameters:
+      - description: User Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      - description: HTTP Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/userservice.UpdateService'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.User'
+        "406":
+          description: Email exists
+          schema:
+            type: string
+      summary: User Update
+      tags:
+      - User
+  /users/{user_id}:
+    get:
+      description: Show user info
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            $ref: '#/definitions/serializer.User'
+        "404":
+          description: Not found
+          schema:
+            type: string
+      summary: User Show
+      tags:
+      - User
 swagger: "2.0"

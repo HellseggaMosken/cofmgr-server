@@ -15,7 +15,7 @@ import (
 // @Description Check server status
 // @Router /ping [get]
 // @Produce json
-// @Success 200 {} string "pong"
+// @Success 200 {string} string "pong"
 func Ping(c *gin.Context) {
 	c.JSON(http.StatusOK, "pong")
 }
