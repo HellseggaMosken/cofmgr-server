@@ -34,7 +34,7 @@ jobs:
         pass: ${{ secrets.REMOTE_PASSWORD }}
         # scp from local to remote
         scp: ./cofmgr => ~/auto-deploy/backend/
-        scp: ./.github/workflows/restart.sh => ~/auto-deploy/backend/
+        scp: ./assets/restart.sh => ~/auto-deploy/backend/
         last_ssh: |
           bash ~/auto-deploy/backend/restart.sh
 
