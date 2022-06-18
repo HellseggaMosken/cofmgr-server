@@ -32,11 +32,13 @@ jobs:
         host: ${{ secrets.REMOTE_ADDR }}
         user: ${{ secrets.REMOTE_USER }}
         pass: ${{ secrets.REMOTE_PASSWORD }}
+        first_ssh: |
+          kill $(cat ~/auto-deploy/backend/pid)
         # scp from local to remote
         scp: |
           ./cofmgr => ~/auto-deploy/backend/
-          ./assets/restart.sh => ~/auto-deploy/backend/
+          ./assets/start.sh => ~/auto-deploy/backend/
         last_ssh: |
-          bash ~/auto-deploy/backend/restart.sh
+          bash ~/auto-deploy/backend/start.sh
 
 
