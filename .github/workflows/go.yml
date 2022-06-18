@@ -36,6 +36,6 @@ jobs:
         scp: ./cofmgr => ~/cofmgr
         last_ssh: |
           killall cofmgr
-          nohup cofmgr > cofmgr-server.log 2>&1 &
+          nohup ./cofmgr > cofmgr-server.log 2>&1 &
 
 
