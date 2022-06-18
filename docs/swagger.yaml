@@ -309,6 +309,10 @@ paths:
           description: Sucess
           schema:
             $ref: '#/definitions/serializer.Conference'
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
       summary: Create Conference
       tags:
       - Conference
@@ -334,6 +338,10 @@ paths:
           description: Sucess
           schema:
             $ref: '#/definitions/serializer.Conference'
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
       summary: Update Conference
       tags:
       - Conference
@@ -377,6 +385,10 @@ paths:
           description: Sucess
           schema:
             $ref: '#/definitions/serializer.Contribution'
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
       summary: Create Contribution
       tags:
       - Contribution
@@ -402,6 +414,10 @@ paths:
           description: Sucess
           schema:
             $ref: '#/definitions/serializer.Contribution'
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
       summary: Update Contribution
       tags:
       - Contribution
@@ -441,6 +457,10 @@ paths:
             items:
               $ref: '#/definitions/serializer.Contribution'
             type: array
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
       summary: List All Contributions of a Conference
       tags:
       - Contribution
@@ -463,6 +483,10 @@ paths:
             items:
               $ref: '#/definitions/serializer.Contribution'
             type: array
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
       summary: List All Contributions of Current Contributor
       tags:
       - Contribution
@@ -541,6 +565,10 @@ paths:
           description: Wrong password or account
           schema:
             type: string
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
       summary: Change Admin Password
       tags:
       - Password
@@ -569,6 +597,10 @@ paths:
             type: string
         "401":
           description: Wrong password or account
+          schema:
+            type: string
+        "403":
+          description: No token or token invalid or expired
           schema:
             type: string
       summary: Change User Password
@@ -604,6 +636,10 @@ paths:
           description: Sucess
           schema:
             type: string
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
       summary: Remove a Referee for a Conference
       tags:
       - Referee
@@ -621,6 +657,10 @@ paths:
       responses:
         "200":
           description: Sucess
+          schema:
+            type: string
+        "403":
+          description: No token or token invalid or expired
           schema:
             type: string
       summary: Add a Referee for a Conference
@@ -643,6 +683,10 @@ paths:
           description: Sucess
           schema:
             type: string
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
       summary: Remove a Contribution for a Referee
       tags:
       - Referee
@@ -660,6 +704,10 @@ paths:
       responses:
         "200":
           description: Sucess
+          schema:
+            type: string
+        "403":
+          description: No token or token invalid or expired
           schema:
             type: string
       summary: Assign a Contribution to a Referee
@@ -684,6 +732,10 @@ paths:
             items:
               $ref: '#/definitions/serializer.User'
             type: array
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
       summary: User List
       tags:
       - User
@@ -732,6 +784,10 @@ paths:
           description: Sucess
           schema:
             $ref: '#/definitions/serializer.User'
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
         "406":
           description: Email exists
           schema:
@@ -756,6 +812,10 @@ paths:
           description: Sucess
           schema:
             $ref: '#/definitions/serializer.User'
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
         "404":
           description: Not found
           schema:

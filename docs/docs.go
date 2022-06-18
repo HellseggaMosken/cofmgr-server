@@ -73,6 +73,12 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/serializer.Conference"
                         }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 }
             },
@@ -110,6 +116,12 @@ const docTemplate = `{
                         "description": "Sucess",
                         "schema": {
                             "$ref": "#/definitions/serializer.Conference"
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }
@@ -177,6 +189,12 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/serializer.Contribution"
                         }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 }
             },
@@ -214,6 +232,12 @@ const docTemplate = `{
                         "description": "Sucess",
                         "schema": {
                             "$ref": "#/definitions/serializer.Contribution"
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }
@@ -275,6 +299,12 @@ const docTemplate = `{
                                 "$ref": "#/definitions/serializer.Contribution"
                             }
                         }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 }
             }
@@ -308,6 +338,12 @@ const docTemplate = `{
                             "items": {
                                 "$ref": "#/definitions/serializer.Contribution"
                             }
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }
@@ -429,6 +465,12 @@ const docTemplate = `{
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 }
             }
@@ -472,6 +514,12 @@ const docTemplate = `{
                     },
                     "401": {
                         "description": "Wrong password or account",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
                         "schema": {
                             "type": "string"
                         }
@@ -526,6 +574,12 @@ const docTemplate = `{
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 }
             },
@@ -552,6 +606,12 @@ const docTemplate = `{
                 "responses": {
                     "200": {
                         "description": "Sucess",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
                         "schema": {
                             "type": "string"
                         }
@@ -586,6 +646,12 @@ const docTemplate = `{
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 }
             },
@@ -612,6 +678,12 @@ const docTemplate = `{
                 "responses": {
                     "200": {
                         "description": "Sucess",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
                         "schema": {
                             "type": "string"
                         }
@@ -648,6 +720,12 @@ const docTemplate = `{
                             "items": {
                                 "$ref": "#/definitions/serializer.User"
                             }
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }
@@ -686,6 +764,12 @@ const docTemplate = `{
                         "description": "Sucess",
                         "schema": {
                             "$ref": "#/definitions/serializer.User"
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
                         }
                     },
                     "406": {
@@ -758,6 +842,12 @@ const docTemplate = `{
                         "description": "Sucess",
                         "schema": {
                             "$ref": "#/definitions/serializer.User"
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
                         }
                     },
                     "404": {
