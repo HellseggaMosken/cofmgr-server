@@ -753,6 +753,58 @@ paths:
       summary: Add a Referee for a Conference
       tags:
       - Referee
+  /referees/conferences:
+    get:
+      description: List conferences for current referee
+      parameters:
+      - description: user Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            items:
+              $ref: '#/definitions/serializer.Conference'
+            type: array
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
+      summary: List Conferences for Current Referee
+      tags:
+      - Referee
+  /referees/conferences/{referee_user_id}:
+    get:
+      description: List conferences for a referee
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            items:
+              $ref: '#/definitions/serializer.Conference'
+            type: array
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
+      summary: List Conferences for a Referee
+      tags:
+      - Referee
   /referees/contribution/{contribution_id}/user/{user_id}:
     delete:
       description: Remove a contribution for a referee(user)
@@ -798,6 +850,58 @@ paths:
           schema:
             type: string
       summary: Assign a Contribution to a Referee
+      tags:
+      - Referee
+  /referees/contributions:
+    get:
+      description: List contributions for current referee
+      parameters:
+      - description: User Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            items:
+              $ref: '#/definitions/serializer.Contribution'
+            type: array
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
+      summary: List Contributions for Current Referee
+      tags:
+      - Referee
+  /referees/contributions/{referee_user_id}:
+    get:
+      description: List contributions for a referee
+      parameters:
+      - description: Admin Token
+        in: body
+        name: token
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            items:
+              $ref: '#/definitions/serializer.Contribution'
+            type: array
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
+      summary: List Contributions for a Referee
       tags:
       - Referee
   /users:

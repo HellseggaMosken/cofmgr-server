@@ -703,6 +703,86 @@
                 }
             }
         },
+        "/referees/conferences": {
+            "get": {
+                "description": "List conferences for current referee",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Referee"
+                ],
+                "summary": "List Conferences for Current Referee",
+                "parameters": [
+                    {
+                        "description": "user Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/serializer.Conference"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/referees/conferences/{referee_user_id}": {
+            "get": {
+                "description": "List conferences for a referee",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Referee"
+                ],
+                "summary": "List Conferences for a Referee",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/serializer.Conference"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/referees/contribution/{contribution_id}/user/{user_id}": {
             "post": {
                 "description": "Assign a contribution to a referee(user)",
@@ -764,6 +844,86 @@
                         "description": "Sucess",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/referees/contributions": {
+            "get": {
+                "description": "List contributions for current referee",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Referee"
+                ],
+                "summary": "List Contributions for Current Referee",
+                "parameters": [
+                    {
+                        "description": "User Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/serializer.Contribution"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/referees/contributions/{referee_user_id}": {
+            "get": {
+                "description": "List contributions for a referee",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Referee"
+                ],
+                "summary": "List Contributions for a Referee",
+                "parameters": [
+                    {
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/serializer.Contribution"
+                            }
                         }
                     },
                     "403": {
