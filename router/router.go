@@ -79,11 +79,22 @@ func NewRouter() *gin.Engine {
 
 	{
 		referee := v1.Group("/referees")
-		referee.Use(md.AuthRequired(md.AuthRequiredAdmin))
-		referee.POST("conference/:cof_id/user/user_id", api.RefereeAddForConference)
-		referee.DELETE("conference/:cof_id/user/user_id", api.RefereeRemoveForConference)
-		referee.POST("contribution/:ctb_id/user/user_id", api.RefereeAddForContribution)
-		referee.DELETE("contribution/:ctb_id/user/user_id", api.RefereeRemoveForContribution)
+		{
+			referee := referee.Group("")
+			referee.Use(md.AuthRequired(md.AuthRequiredUser))
+			referee.GET("conferences", api.RefereeConferenceListForCurrent)
+			referee.GET("contributions", api.RefereeContributionListForCurrent)
+		}
+		{
+			referee := referee.Group("")
+			referee.Use(md.AuthRequired(md.AuthRequiredAdmin))
+			referee.GET("conferences/:referee_user_id", api.RefereeConferenceList)
+			referee.GET("contributions/:referee_user_id", api.RefereeContributionList)
+			referee.POST("conference/:cof_id/user/user_id", api.RefereeAddForConference)
+			referee.DELETE("conference/:cof_id/user/user_id", api.RefereeRemoveForConference)
+			referee.POST("contribution/:ctb_id/user/user_id", api.RefereeAddForContribution)
+			referee.DELETE("contribution/:ctb_id/user/user_id", api.RefereeRemoveForContribution)
+		}
 	}
 
 	{

@@ -3,7 +3,13 @@ package refereeservice
 import (
 	"cofmgr/model"
 	"cofmgr/service"
+	"cofmgr/service/serializer"
 )
+
+func ListContributionsForReferee(refereeUserID string) ([]*serializer.Contribution, service.Status) {
+	ctbs := model.ListContributionsForReferee(refereeUserID)
+	return serializer.BuildContributions(ctbs), service.StatusOK
+}
 
 func AddRefereeForContribution(contributionID string, userID string) service.Status {
 	r := &model.RefereeCtb{
