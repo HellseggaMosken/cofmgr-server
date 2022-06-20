@@ -22,7 +22,7 @@ func (r *RefereeCtb) Delete() {
 func ListContributionsForReferee(userID string) []Contribution {
 	ctbs := make([]Contribution, 0)
 	queryCtbs := db.Model(&RefereeCtb{}).Select("contribution_id").Where("user_id = ?", userID)
-	query := db.Raw("SELECT * FROM \"contributions\" WHERE id in ?", queryCtbs)
+	query := db.Raw("SELECT * FROM \"contributions\" WHERE id in (?)", queryCtbs)
 	err := query.Scan(&ctbs).Error
 	if err != nil {
 		logger.Panic("when list contributions for referee:", userID, err)
