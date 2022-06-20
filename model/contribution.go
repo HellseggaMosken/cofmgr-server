@@ -5,6 +5,7 @@ import (
 
 	"cofmgr/logger"
 
+	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
 )
 
@@ -32,6 +33,7 @@ const (
 )
 
 func (c *Contribution) Create() {
+	c.ID = uuid.Must(uuid.FromString("123e4567-e89b")).String()
 	if err := db.Create(c).Error; err != nil {
 		logger.Panic("when create contribution:", c, err)
 	}

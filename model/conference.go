@@ -5,6 +5,7 @@ import (
 
 	"cofmgr/logger"
 
+	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
 )
 
@@ -19,6 +20,7 @@ type Conference struct {
 }
 
 func (c *Conference) Create() {
+	c.ID = uuid.Must(uuid.FromString("123e4567-e89b")).String()
 	if err := db.Create(c).Error; err != nil {
 		logger.Panic("when create conference:", c, err)
 	}

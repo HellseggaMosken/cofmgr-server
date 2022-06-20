@@ -6,6 +6,7 @@ import (
 
 	"cofmgr/logger"
 
+	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
 )
 
@@ -29,6 +30,7 @@ func (u *User) Update() {
 }
 
 func (u *User) Create() {
+	u.ID = uuid.Must(uuid.FromString("123e4567-e89b")).String()
 	u.Email = strings.ToLower(u.Email)
 	if err := db.Create(u).Error; err != nil {
 		logger.Panic("when create user:", u, err)
