@@ -318,11 +318,10 @@ paths:
       description: Create a conference
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       - description: HTTP Body
         in: body
         name: body
@@ -347,11 +346,10 @@ paths:
       description: Update a conference
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       - description: HTTP Body
         in: body
         name: body
@@ -394,11 +392,10 @@ paths:
       description: Create a contribution
       parameters:
       - description: User Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       - description: HTTP Body
         in: body
         name: body
@@ -423,11 +420,10 @@ paths:
       description: Update a contribution
       parameters:
       - description: User Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       - description: HTTP Body
         in: body
         name: body
@@ -470,11 +466,10 @@ paths:
       description: List all contributions of a conference
       parameters:
       - description: User Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -496,11 +491,10 @@ paths:
       description: List all contributions of the current contributor(user)
       parameters:
       - description: User Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -570,11 +564,10 @@ paths:
       description: Get a signed oss url for download
       parameters:
       - description: User or Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       - description: HTTP Body
         in: body
         name: body
@@ -600,11 +593,10 @@ paths:
       description: Get a signed oss url for upload
       parameters:
       - description: User or Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       - description: HTTP Body
         in: body
         name: body
@@ -630,11 +622,10 @@ paths:
       description: Change admin password
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       - description: HTTP Body
         in: body
         name: body
@@ -664,11 +655,10 @@ paths:
       description: Change user password
       parameters:
       - description: User Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       - description: HTTP Body
         in: body
         name: body
@@ -711,11 +701,10 @@ paths:
       description: Remove a referee(user) for a conference
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -734,11 +723,10 @@ paths:
       description: Add a referee(user) for a conference
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -758,11 +746,10 @@ paths:
       description: List conferences for current referee
       parameters:
       - description: user Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -784,11 +771,10 @@ paths:
       description: List conferences for a referee
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -810,11 +796,10 @@ paths:
       description: Remove a contribution for a referee(user)
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -833,11 +818,10 @@ paths:
       description: Assign a contribution to a referee(user)
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -857,11 +841,10 @@ paths:
       description: List contributions for current referee
       parameters:
       - description: User Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -883,11 +866,10 @@ paths:
       description: List contributions for a referee
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -909,11 +891,10 @@ paths:
       description: List all users
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:
@@ -957,11 +938,10 @@ paths:
       description: Update user info
       parameters:
       - description: User Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       - description: HTTP Body
         in: body
         name: body
@@ -991,11 +971,10 @@ paths:
       description: Show user info
       parameters:
       - description: Admin Token
-        in: body
+        in: header
         name: token
         required: true
-        schema:
-          type: string
+        type: string
       produces:
       - application/json
       responses:

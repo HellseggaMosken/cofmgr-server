@@ -10,7 +10,7 @@ import (
 // @Summary Add a Referee for a Conference
 // @Description Add a referee(user) for a conference
 // @Router /referees/conference/{conference_id}/user/{user_id} [post]
-// @Param token body string true "Admin Token"
+// @Param token header string true "Admin Token"
 // @Produce json
 // @Success 200 {string} string "Sucess"
 // @Failure 403 {string} string "No token or token invalid or expired"
@@ -23,7 +23,7 @@ func RefereeAddForConference(c *gin.Context) {
 // @Summary Remove a Referee for a Conference
 // @Description Remove a referee(user) for a conference
 // @Router /referees/conference/{conference_id}/user/{user_id} [delete]
-// @Param token body string true "Admin Token"
+// @Param token header string true "Admin Token"
 // @Produce json
 // @Success 200 {string} string "Sucess"
 // @Failure 403 {string} string "No token or token invalid or expired"
@@ -36,7 +36,7 @@ func RefereeRemoveForConference(c *gin.Context) {
 // @Summary Assign a Contribution to a Referee
 // @Description Assign a contribution to a referee(user)
 // @Router /referees/contribution/{contribution_id}/user/{user_id} [post]
-// @Param token body string true "Admin Token"
+// @Param token header string true "Admin Token"
 // @Produce json
 // @Success 200 {string} string "Sucess"
 // @Failure 403 {string} string "No token or token invalid or expired"
@@ -49,7 +49,7 @@ func RefereeAddForContribution(c *gin.Context) {
 // @Summary Remove a Contribution for a Referee
 // @Description Remove a contribution for a referee(user)
 // @Router /referees/contribution/{contribution_id}/user/{user_id} [delete]
-// @Param token body string true "Admin Token"
+// @Param token header string true "Admin Token"
 // @Produce json
 // @Success 200 {string} string "Sucess"
 // @Failure 403 {string} string "No token or token invalid or expired"
@@ -62,7 +62,7 @@ func RefereeRemoveForContribution(c *gin.Context) {
 // @Summary List Conferences for a Referee
 // @Description List conferences for a referee
 // @Router /referees/conferences/{referee_user_id} [get]
-// @Param token body string true "Admin Token"
+// @Param token header string true "Admin Token"
 // @Produce json
 // @Success 200 {array}  serializer.Conference "Sucess"
 // @Failure 403 {string} string                "No token or token invalid or expired"
@@ -75,7 +75,7 @@ func RefereeConferenceList(c *gin.Context) {
 // @Summary List Conferences for Current Referee
 // @Description List conferences for current referee
 // @Router /referees/conferences [get]
-// @Param token body string true "user Token"
+// @Param token header string true "user Token"
 // @Produce json
 // @Success 200 {array}  serializer.Conference "Sucess"
 // @Failure 403 {string} string                "No token or token invalid or expired"
@@ -88,7 +88,7 @@ func RefereeConferenceListForCurrent(c *gin.Context) {
 // @Summary List Contributions for a Referee
 // @Description List contributions for a referee
 // @Router /referees/contributions/{referee_user_id} [get]
-// @Param token body string true "Admin Token"
+// @Param token header string true "Admin Token"
 // @Produce json
 // @Success 200 {array}  serializer.Contribution "Sucess"
 // @Failure 403 {string} string                  "No token or token invalid or expired"
@@ -101,7 +101,7 @@ func RefereeContributionList(c *gin.Context) {
 // @Summary List Contributions for Current Referee
 // @Description List contributions for current referee
 // @Router /referees/contributions [get]
-// @Param token body string true "User Token"
+// @Param token header string true "User Token"
 // @Produce json
 // @Success 200 {array}  serializer.Contribution "Sucess"
 // @Failure 403 {string} string                  "No token or token invalid or expired"

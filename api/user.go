@@ -27,7 +27,7 @@ func UserRegister(c *gin.Context) {
 // @Summary User Update
 // @Description Update user info
 // @Router /users [put]
-// @Param token body string                    true "User Token"
+// @Param token header string                    true "User Token"
 // @Param body  body userservice.UpdateService true "HTTP Body"
 // @Produce json
 // @Success 200 {object} serializer.User "Sucess"
@@ -46,7 +46,7 @@ func UserUpdate(c *gin.Context) {
 // @Summary User Show
 // @Description Show user info
 // @Router /users/{user_id} [get]
-// @Param token body string true "Admin Token"
+// @Param token header string true "Admin Token"
 // @Produce json
 // @Success 200 {object} serializer.User "Sucess"
 // @Failure 404 {string} string          "Not found"
@@ -60,7 +60,7 @@ func UserShow(c *gin.Context) {
 // @Summary User List
 // @Description List all users
 // @Router /users [get]
-// @Param token body string true "Admin Token"
+// @Param token header string true "Admin Token"
 // @Produce json
 // @Success 200 {array}  serializer.User "Sucess"
 // @Failure 403 {string} string          "No token or token invalid or expired"

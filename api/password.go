@@ -10,7 +10,7 @@ import (
 // @Summary Change User Password
 // @Description Change user password
 // @Router /password/user [put]
-// @Param token body string                          true "User Token"
+// @Param token header string                          true "User Token"
 // @Param body  body passwordservice.PasswordService true "HTTP Body"
 // @Produce json
 // @Success 200 {string} string "Sucess"
@@ -29,7 +29,7 @@ func PasswordChangeForUser(c *gin.Context) {
 // @Summary Change Admin Password
 // @Description Change admin password
 // @Router /password/admin [put]
-// @Param token body string                          true "Admin Token"
+// @Param token header string                          true "Admin Token"
 // @Param body  body passwordservice.PasswordService true "HTTP Body"
 // @Produce json
 // @Success 200 {string} string "Sucess"

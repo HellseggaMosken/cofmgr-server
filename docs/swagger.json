@@ -41,13 +41,11 @@
                 "summary": "Update Conference",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -85,13 +83,11 @@
                 "summary": "Create Conference",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -157,13 +153,11 @@
                 "summary": "Update Contribution",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -201,13 +195,11 @@
                 "summary": "Create Contribution",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -273,13 +265,11 @@
                 "summary": "List All Contributions of a Conference",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -313,13 +303,11 @@
                 "summary": "List All Contributions of Current Contributor",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -427,13 +415,11 @@
                 "summary": "OSS Download URL",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User or Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -473,13 +459,11 @@
                 "summary": "OSS Upload URL",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User or Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -519,13 +503,11 @@
                 "summary": "Change Admin Password",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -571,13 +553,11 @@
                 "summary": "Change User Password",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -643,13 +623,11 @@
                 "summary": "Add a Referee for a Conference",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -678,13 +656,11 @@
                 "summary": "Remove a Referee for a Conference",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -715,13 +691,11 @@
                 "summary": "List Conferences for Current Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "user Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -755,13 +729,11 @@
                 "summary": "List Conferences for a Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -795,13 +767,11 @@
                 "summary": "Assign a Contribution to a Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -830,13 +800,11 @@
                 "summary": "Remove a Contribution for a Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -867,13 +835,11 @@
                 "summary": "List Contributions for Current Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -907,13 +873,11 @@
                 "summary": "List Contributions for a Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -947,13 +911,11 @@
                 "summary": "User List",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -985,13 +947,11 @@
                 "summary": "User Update",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -1072,13 +1032,11 @@
                 "summary": "User Show",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {

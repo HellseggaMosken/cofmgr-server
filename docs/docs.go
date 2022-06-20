@@ -49,13 +49,11 @@ const docTemplate = `{
                 "summary": "Update Conference",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -93,13 +91,11 @@ const docTemplate = `{
                 "summary": "Create Conference",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -165,13 +161,11 @@ const docTemplate = `{
                 "summary": "Update Contribution",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -209,13 +203,11 @@ const docTemplate = `{
                 "summary": "Create Contribution",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -281,13 +273,11 @@ const docTemplate = `{
                 "summary": "List All Contributions of a Conference",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -321,13 +311,11 @@ const docTemplate = `{
                 "summary": "List All Contributions of Current Contributor",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -435,13 +423,11 @@ const docTemplate = `{
                 "summary": "OSS Download URL",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User or Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -481,13 +467,11 @@ const docTemplate = `{
                 "summary": "OSS Upload URL",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User or Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -527,13 +511,11 @@ const docTemplate = `{
                 "summary": "Change Admin Password",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -579,13 +561,11 @@ const docTemplate = `{
                 "summary": "Change User Password",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -651,13 +631,11 @@ const docTemplate = `{
                 "summary": "Add a Referee for a Conference",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -686,13 +664,11 @@ const docTemplate = `{
                 "summary": "Remove a Referee for a Conference",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -723,13 +699,11 @@ const docTemplate = `{
                 "summary": "List Conferences for Current Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "user Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -763,13 +737,11 @@ const docTemplate = `{
                 "summary": "List Conferences for a Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -803,13 +775,11 @@ const docTemplate = `{
                 "summary": "Assign a Contribution to a Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -838,13 +808,11 @@ const docTemplate = `{
                 "summary": "Remove a Contribution for a Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -875,13 +843,11 @@ const docTemplate = `{
                 "summary": "List Contributions for Current Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -915,13 +881,11 @@ const docTemplate = `{
                 "summary": "List Contributions for a Referee",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -955,13 +919,11 @@ const docTemplate = `{
                 "summary": "User List",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -993,13 +955,11 @@ const docTemplate = `{
                 "summary": "User Update",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "User Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     },
                     {
                         "description": "HTTP Body",
@@ -1080,13 +1040,11 @@ const docTemplate = `{
                 "summary": "User Show",
                 "parameters": [
                     {
+                        "type": "string",
                         "description": "Admin Token",
                         "name": "token",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {

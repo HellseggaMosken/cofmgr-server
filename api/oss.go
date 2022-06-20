@@ -10,7 +10,7 @@ import (
 // @Summary OSS Upload URL
 // @Description Get a signed oss url for upload
 // @Router /oss/upload [post]
-// @Param token body string                         true "User or Admin Token"
+// @Param token header string                         true "User or Admin Token"
 // @Param body  body ossservice.GetUploadURLService true "HTTP Body"
 // @Produce json
 // @Success 200 {object} serializer.OSSSignedURL "Sucess"
@@ -28,7 +28,7 @@ func OSSGetUploadURL(c *gin.Context) {
 // @Summary OSS Download URL
 // @Description Get a signed oss url for download
 // @Router /oss/download [post]
-// @Param token body string                           true "User or Admin Token"
+// @Param token header string                           true "User or Admin Token"
 // @Param body  body ossservice.GetDownloadURLService true "HTTP Body"
 // @Produce json
 // @Success 200 {object} serializer.OSSSignedURL "Sucess"

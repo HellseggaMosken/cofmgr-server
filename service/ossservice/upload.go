@@ -20,12 +20,12 @@ type GetUploadURLService struct {
 
 func (s *GetUploadURLService) GetUploadURL() (*serializer.OSSSignedURL, service.Status) {
 	ext := strings.ToLower(filepath.Ext(s.Filename))
-	if ext != "doc" && ext != "docx" && ext != "pdf" {
+	if ext != ".doc" && ext != ".docx" && ext != ".pdf" {
 		return nil, service.StatusOSSUnsupportedFileType
 	}
 
 	signed := &serializer.OSSSignedURL{
-		Filename:     fmt.Sprintf("%d-%s", time.Now().Unix(), s.Filename),
+		Filename:     fmt.Sprintf("[%d]%s", time.Now().Unix(), s.Filename),
 		ContentType:  mime.TypeByExtension(ext),
 		Method:       "put",
 		ExpiredInSec: 600,

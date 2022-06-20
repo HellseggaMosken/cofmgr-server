@@ -10,7 +10,7 @@ import (
 // @Summary Create Contribution
 // @Description Create a contribution
 // @Router /contributions [post]
-// @Param token body string                   true "User Token"
+// @Param token header string                   true "User Token"
 // @Param body  body ctbservice.CreateService true "HTTP Body"
 // @Produce json
 // @Success 200 {object} serializer.Contribution "Sucess"
@@ -28,7 +28,7 @@ func ContributionCreate(c *gin.Context) {
 // @Summary Update Contribution
 // @Description Update a contribution
 // @Router /contributions [put]
-// @Param token body string                   true "User Token"
+// @Param token header string                   true "User Token"
 // @Param body  body ctbservice.UpdateService true "HTTP Body"
 // @Produce json
 // @Success 200 {object} serializer.Contribution "Sucess"
@@ -58,7 +58,7 @@ func ContributionShow(c *gin.Context) {
 // @Summary List All Contributions of Current Contributor
 // @Description List all contributions of the current contributor(user)
 // @Router /contributions/user [get]
-// @Param token body string true "User Token"
+// @Param token header string true "User Token"
 // @Produce json
 // @Success 200 {array} serializer.Contribution "Sucess"
 // @Failure 403 {string} string                  "No token or token invalid or expired"
@@ -71,7 +71,7 @@ func ContributionListWithUser(c *gin.Context) {
 // @Summary List All Contributions of a Conference
 // @Description List all contributions of a conference
 // @Router /contributions/conference/{conference_id} [get]
-// @Param token body string true "User Token"
+// @Param token header string true "User Token"
 // @Produce json
 // @Success 200 {array} serializer.Contribution "Sucess"
 // @Failure 403 {string} string                 "No token or token invalid or expired"
