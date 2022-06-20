@@ -17,7 +17,7 @@ func (s *LoginService) LoginUser() (u *serializer.User, token string, st service
 	if user == nil || !model.PasswordCompare(s.Password, user.PasswordDigest) {
 		return nil, "", service.StatusWrongAccount
 	}
-	token = authservice.CreateToken(u.ID, false)
+	token = authservice.CreateToken(user.ID, false)
 	u = serializer.BuildUser(user)
 	return u, token, service.StatusOK
 }
@@ -27,7 +27,7 @@ func (s *LoginService) LoginAdmin() (u *serializer.User, token string, st servic
 	if admin == nil || !model.PasswordCompare(s.Password, admin.PasswordDigest) {
 		return nil, "", service.StatusWrongAccount
 	}
-	token = authservice.CreateToken(u.ID, true)
+	token = authservice.CreateToken(admin.ID, true)
 	u = serializer.BuildUser(&admin.User)
 	return u, token, service.StatusOK
 }
