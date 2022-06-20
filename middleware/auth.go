@@ -47,10 +47,10 @@ func AuthRequired(requiredType AuthRequiredType) gin.HandlerFunc {
 				c.Set("admin", admin)
 			}
 		} else {
-			if user := model.FindAdminWithID(id); user == nil {
+			if user := model.FindUserWithID(id); user == nil {
 				c.AbortWithStatusJSON(service.StatusNoAuth, "no user found")
 			} else {
-				c.Set("admin", user)
+				c.Set("user", user)
 			}
 		}
 		c.Next()
