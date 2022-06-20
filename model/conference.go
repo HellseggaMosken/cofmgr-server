@@ -20,7 +20,7 @@ type Conference struct {
 }
 
 func (c *Conference) Create() {
-	c.ID = uuid.Must(uuid.FromString("123e4567-e89b")).String()
+	c.ID = uuid.NewV4().String()
 	if err := db.Create(c).Error; err != nil {
 		logger.Panic("when create conference:", c, err)
 	}
