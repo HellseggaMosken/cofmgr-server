@@ -11,7 +11,7 @@ type PasswordService struct {
 }
 
 func (s *PasswordService) ChangeUserPassword(user *model.User) service.Status {
-	if model.PasswordCompare(s.OldPassword, user.PasswordDigest) {
+	if !model.PasswordCompare(s.OldPassword, user.PasswordDigest) {
 		return service.StatusWrongAccount
 	}
 
@@ -21,7 +21,7 @@ func (s *PasswordService) ChangeUserPassword(user *model.User) service.Status {
 }
 
 func (s *PasswordService) ChangeAdminPassword(admin *model.Admin) service.Status {
-	if model.PasswordCompare(s.OldPassword, admin.PasswordDigest) {
+	if !model.PasswordCompare(s.OldPassword, admin.PasswordDigest) {
 		return service.StatusWrongAccount
 	}
 
