@@ -581,6 +581,10 @@ paths:
           description: Sucess
           schema:
             $ref: '#/definitions/serializer.OSSSignedURL'
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
         "404":
           description: Target file not exists
           schema:
@@ -610,6 +614,10 @@ paths:
           description: Sucess
           schema:
             $ref: '#/definitions/serializer.OSSSignedURL'
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
         "410":
           description: Unsuported file type. Only suport doc/docx/pdf
           schema:
@@ -696,6 +704,31 @@ paths:
       summary: Ping
       tags:
       - Test
+  /referees/conference/{conference_id}:
+    get:
+      description: List referees for a conference
+      parameters:
+      - description: User Token
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            items:
+              $ref: '#/definitions/serializer.User'
+            type: array
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
+      summary: List Referees for a Conference
+      tags:
+      - Referee
   /referees/conference/{conference_id}/user/{user_id}:
     delete:
       description: Remove a referee(user) for a conference
@@ -745,7 +778,7 @@ paths:
     get:
       description: List conferences for current referee
       parameters:
-      - description: user Token
+      - description: User Token
         in: header
         name: token
         required: true

@@ -446,6 +446,12 @@ const docTemplate = `{
                             "$ref": "#/definitions/serializer.OSSSignedURL"
                         }
                     },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
                     "404": {
                         "description": "Target file not exists",
                         "schema": {
@@ -488,6 +494,12 @@ const docTemplate = `{
                         "description": "Sucess",
                         "schema": {
                             "$ref": "#/definitions/serializer.OSSSignedURL"
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
                         }
                     },
                     "410": {
@@ -619,6 +631,44 @@ const docTemplate = `{
                 }
             }
         },
+        "/referees/conference/{conference_id}": {
+            "get": {
+                "description": "List referees for a conference",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Referee"
+                ],
+                "summary": "List Referees for a Conference",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User Token",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/serializer.User"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/referees/conference/{conference_id}/user/{user_id}": {
             "post": {
                 "description": "Add a referee(user) for a conference",
@@ -700,7 +750,7 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "user Token",
+                        "description": "User Token",
                         "name": "token",
                         "in": "header",
                         "required": true

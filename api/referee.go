@@ -75,7 +75,7 @@ func RefereeConferenceList(c *gin.Context) {
 // @Summary List Conferences for Current Referee
 // @Description List conferences for current referee
 // @Router /referees/conferences [get]
-// @Param token header string true "user Token"
+// @Param token header string true "User Token"
 // @Produce json
 // @Success 200 {array}  serializer.Conference "Sucess"
 // @Failure 403 {string} string                "No token or token invalid or expired"
@@ -108,4 +108,17 @@ func RefereeContributionList(c *gin.Context) {
 func RefereeContributionListForCurrent(c *gin.Context) {
 	ctbs, code := refereeservice.ListContributionsForReferee(currentUser(c).ID)
 	c.JSON(code, ctbs)
+}
+
+// @Tags Referee
+// @Summary List Referees for a Conference
+// @Description List referees for a conference
+// @Router /referees/conference/{conference_id} [get]
+// @Param token header string true "User Token"
+// @Produce json
+// @Success 200 {array}  serializer.User "Sucess"
+// @Failure 403 {string} string          "No token or token invalid or expired"
+func RefereeListForConference(c *gin.Context) {
+	users, code := refereeservice.ListRefereesForConference(c.Param("cof_id"))
+	c.JSON(code, users)
 }

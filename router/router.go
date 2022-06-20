@@ -88,6 +88,7 @@ func NewRouter() *gin.Engine {
 		{
 			referee := referee.Group("")
 			referee.Use(md.AuthRequired(md.AuthRequiredAdmin))
+			referee.GET("conference/:cof_id", api.RefereeListForConference)
 			referee.GET("conferences/:referee_user_id", api.RefereeConferenceList)
 			referee.GET("contributions/:referee_user_id", api.RefereeContributionList)
 			referee.POST("conference/:cof_id/user/user_id", api.RefereeAddForConference)

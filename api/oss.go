@@ -15,6 +15,7 @@ import (
 // @Produce json
 // @Success 200 {object} serializer.OSSSignedURL "Sucess"
 // @Failure 410 {string} string                  "Unsuported file type. Only suport doc/docx/pdf"
+// @Failure 403 {string} string                  "No token or token invalid or expired"
 func OSSGetUploadURL(c *gin.Context) {
 	var s ossservice.GetUploadURLService
 	if !bind(c, &s) {
@@ -33,6 +34,7 @@ func OSSGetUploadURL(c *gin.Context) {
 // @Produce json
 // @Success 200 {object} serializer.OSSSignedURL "Sucess"
 // @Failure 404 {string} string                  "Target file not exists"
+// @Failure 403 {string} string                  "No token or token invalid or expired"
 func OSSGetUDownloaddURL(c *gin.Context) {
 	var s ossservice.GetDownloadURLService
 	if !bind(c, &s) {

@@ -6,6 +6,11 @@ import (
 	"cofmgr/service/serializer"
 )
 
+func ListRefereesForConference(conferenceID string) ([]*serializer.User, service.Status) {
+	referees := model.ListRefereesForConference(conferenceID)
+	return serializer.BuildUsers(referees), service.StatusOK
+}
+
 func ListConferencesForReferee(refereeUserID string) ([]*serializer.Conference, service.Status) {
 	cofs := model.ListConferencesForReferee(refereeUserID)
 	return serializer.BuildConferenceres(cofs), service.StatusOK
