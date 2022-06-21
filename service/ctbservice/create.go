@@ -10,7 +10,7 @@ type CreateService struct {
 	ConferenceID string `json:"conferenceId" binding:"required"`
 	Title        string `json:"title"        binding:"required,min=10,max=100"`
 	Abstract     string `json:"abstract"     binding:"required,min=10,max=2000"`
-	FileName     string `json:"fileName"     binding:"required"`
+	Filename     string `json:"filename"     binding:"required"`
 }
 
 func (s *CreateService) Create(u *model.User) (*serializer.Contribution, service.Status) {
@@ -19,7 +19,7 @@ func (s *CreateService) Create(u *model.User) (*serializer.Contribution, service
 		ConferenceID: s.ConferenceID,
 		Title:        s.Title,
 		Abstract:     s.Abstract,
-		FileName:     s.FileName,
+		Filename:     s.Filename,
 		Status:       model.ContributionStatusNotAssigned,
 	}
 

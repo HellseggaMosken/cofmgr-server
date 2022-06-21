@@ -18,7 +18,7 @@ type Contribution struct {
 	Abstract     string
 	Status       ContributionStatus
 	Comment      string
-	FileName     string
+	Filename     string
 }
 
 type ContributionStatus int

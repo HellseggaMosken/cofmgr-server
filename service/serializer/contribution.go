@@ -11,7 +11,7 @@ type Contribution struct {
 	Abstract     string `json:"abstract"`
 	Status       int    `json:"status"`
 	Comment      string `json:"comment"`
-	FileName     string `json:"fileName"`
+	Filename     string `json:"filename"`
 }
 
 func BuildContribution(ctb *model.Contribution) *Contribution {
@@ -27,7 +27,7 @@ func BuildContribution(ctb *model.Contribution) *Contribution {
 		Abstract:     ctb.Abstract,
 		Status:       int(ctb.Status),
 		Comment:      ctb.Comment,
-		FileName:     ctb.FileName,
+		Filename:     ctb.Filename,
 	}
 }
 
