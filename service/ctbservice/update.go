@@ -27,7 +27,7 @@ func (s *UpdateService) Update() (*serializer.Contribution, service.Status) {
 	ctb.Comment = s.Comment
 	ctb.FileName = s.FileName
 
-	ctb.Create()
+	ctb.Update()
 
 	return serializer.BuildContribution(ctb), service.StatusOK
 }
