@@ -1195,7 +1195,7 @@
             "required": [
                 "abstract",
                 "conferenceId",
-                "fileName",
+                "filename",
                 "title"
             ],
             "properties": {
@@ -1207,7 +1207,7 @@
                 "conferenceId": {
                     "type": "string"
                 },
-                "fileName": {
+                "filename": {
                     "type": "string"
                 },
                 "title": {
@@ -1221,7 +1221,7 @@
             "type": "object",
             "required": [
                 "abstract",
-                "fileName",
+                "filename",
                 "id",
                 "status",
                 "title"
@@ -1236,7 +1236,7 @@
                     "type": "string",
                     "maxLength": 2000
                 },
-                "fileName": {
+                "filename": {
                     "type": "string"
                 },
                 "id": {
@@ -1352,7 +1352,7 @@
                 "conferenceId": {
                     "type": "string"
                 },
-                "fileName": {
+                "filename": {
                     "type": "string"
                 },
                 "id": {

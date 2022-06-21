@@ -66,7 +66,7 @@ definitions:
         type: string
       conferenceId:
         type: string
-      fileName:
+      filename:
         type: string
       title:
         maxLength: 100
@@ -75,7 +75,7 @@ definitions:
     required:
     - abstract
     - conferenceId
-    - fileName
+    - filename
     - title
     type: object
   ctbservice.UpdateService:
@@ -87,7 +87,7 @@ definitions:
       comment:
         maxLength: 2000
         type: string
-      fileName:
+      filename:
         type: string
       id:
         type: string
@@ -101,7 +101,7 @@ definitions:
         type: string
     required:
     - abstract
-    - fileName
+    - filename
     - id
     - status
     - title
@@ -173,7 +173,7 @@ definitions:
         type: string
       conferenceId:
         type: string
-      fileName:
+      filename:
         type: string
       id:
         type: string

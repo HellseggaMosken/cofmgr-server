@@ -1203,7 +1203,7 @@ const docTemplate = `{
             "required": [
                 "abstract",
                 "conferenceId",
-                "fileName",
+                "filename",
                 "title"
             ],
             "properties": {
@@ -1215,7 +1215,7 @@ const docTemplate = `{
                 "conferenceId": {
                     "type": "string"
                 },
-                "fileName": {
+                "filename": {
                     "type": "string"
                 },
                 "title": {
@@ -1229,7 +1229,7 @@ const docTemplate = `{
             "type": "object",
             "required": [
                 "abstract",
-                "fileName",
+                "filename",
                 "id",
                 "status",
                 "title"
@@ -1244,7 +1244,7 @@ const docTemplate = `{
                     "type": "string",
                     "maxLength": 2000
                 },
-                "fileName": {
+                "filename": {
                     "type": "string"
                 },
                 "id": {
@@ -1360,7 +1360,7 @@ const docTemplate = `{
                 "conferenceId": {
                     "type": "string"
                 },
-                "fileName": {
+                "filename": {
                     "type": "string"
                 },
                 "id": {
