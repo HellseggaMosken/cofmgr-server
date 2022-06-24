@@ -949,6 +949,44 @@
                 }
             }
         },
+        "/referees/notassigned/contributions/{conference_id}": {
+            "get": {
+                "description": "List not assigned contributions for a Conference",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Referee"
+                ],
+                "summary": "List Not Assigned Contributions for a Conference",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Admin Token",
+                        "name": "token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucess",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/serializer.Contribution"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "No token or token invalid or expired",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/users": {
             "get": {
                 "description": "List all users",

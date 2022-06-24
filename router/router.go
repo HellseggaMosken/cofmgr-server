@@ -91,6 +91,7 @@ func NewRouter() *gin.Engine {
 			referee.GET("conference/:cof_id", api.RefereeListForConference)
 			referee.GET("conferences/:referee_user_id", api.RefereeConferenceList)
 			referee.GET("contributions/:referee_user_id", api.RefereeContributionList)
+			referee.GET("notassigned/contributions/:cof_id", api.RefereeContributionNotAssignedList)
 			referee.POST("conference/:cof_id/user/:user_id", api.RefereeAddForConference)
 			referee.DELETE("conference/:cof_id/user/:user_id", api.RefereeRemoveForConference)
 			referee.POST("contribution/:ctb_id/user/:user_id", api.RefereeAddForContribution)

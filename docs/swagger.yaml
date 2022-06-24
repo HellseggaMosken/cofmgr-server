@@ -919,6 +919,31 @@ paths:
       summary: List Contributions for a Referee
       tags:
       - Referee
+  /referees/notassigned/contributions/{conference_id}:
+    get:
+      description: List not assigned contributions for a Conference
+      parameters:
+      - description: Admin Token
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Sucess
+          schema:
+            items:
+              $ref: '#/definitions/serializer.Contribution'
+            type: array
+        "403":
+          description: No token or token invalid or expired
+          schema:
+            type: string
+      summary: List Not Assigned Contributions for a Conference
+      tags:
+      - Referee
   /users:
     get:
       description: List all users

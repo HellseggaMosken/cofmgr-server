@@ -28,3 +28,8 @@ func RemoveRefereeForContribution(contributionID string, userID string) service.
 	r.Delete()
 	return service.StatusOK
 }
+
+func ListContributionsNotAssignedForConference(conferenceID string) ([]*serializer.Contribution, service.Status) {
+	ctbs := model.ListContributionsNotAssignedForConference(conferenceID)
+	return serializer.BuildContributions(ctbs), service.StatusOK
+}

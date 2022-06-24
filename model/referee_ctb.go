@@ -30,3 +30,31 @@ func ListContributionsForReferee(userID string) []Contribution {
 	}
 	return ctbs
 }
+
+func ListContributionsNotAssignedForConference(conferenceID string) []Contribution {
+	ctbs := make([]Contribution, 0)
+	err := db.Find(&ctbs, "conference_id = ?", conferenceID).Error
+	if err != nil {
+		logger.Panic("when ListContributionsNotAssignedForConference ctbs")
+	}
+	assigned := make([]RefereeCtb, 0)
+	err = db.Find(&assigned).Error
+	if err != nil {
+		logger.Panic("when ListContributionsNotAssignedForConference assigned")
+	}
+
+	notAssigned := make([]Contribution, 0)
+	for _, c := range ctbs {
+		found := false
+		for _, as := range assigned {
+			if as.ContributionID == c.ID {
+				found = true
+				break
+			}
+		}
+		if !found {
+			notAssigned = append(notAssigned, c)
+		}
+	}
+	return notAssigned
+}

@@ -122,3 +122,16 @@ func RefereeListForConference(c *gin.Context) {
 	users, code := refereeservice.ListRefereesForConference(c.Param("cof_id"))
 	c.JSON(code, users)
 }
+
+// @Tags Referee
+// @Summary List Not Assigned Contributions for a Conference
+// @Description List not assigned contributions for a Conference
+// @Router /referees/notassigned/contributions/{conference_id} [get]
+// @Param token header string true "Admin Token"
+// @Produce json
+// @Success 200 {array}  serializer.Contribution "Sucess"
+// @Failure 403 {string} string                  "No token or token invalid or expired"
+func RefereeContributionNotAssignedList(c *gin.Context) {
+	ctbs, code := refereeservice.ListContributionsNotAssignedForConference(c.Param("cof_id"))
+	c.JSON(code, ctbs)
+}
